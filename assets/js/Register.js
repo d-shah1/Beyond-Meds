@@ -16,8 +16,8 @@ var firebaseConfig = {
 
 $("#btn-login").click(function()
 {
-    var email = $("#email").val();
-    var password = $("#password").val();
+    var email = $("#email").value();
+    var password = $("#password").value();
 
     if (email != "" && password != "")
     {
