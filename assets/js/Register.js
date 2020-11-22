@@ -14,10 +14,10 @@ var firebaseConfig = {
 
   firebase.auth.Auth.Persistence.LOCAL;
 
-$("btn-login").click(function()
+$("#btn-login").click(function()
 {
-    var email = $("email").val();
-    var password = $("password").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
 
     if (email != "" && password != "")
     {
