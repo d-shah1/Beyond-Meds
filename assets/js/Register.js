@@ -12,29 +12,19 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  firebase.auth.Auth.Persistence.LOCAL;
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+  var messagesRef = firebase.database().ref('Users');
+  db.settings({ timeStampsInSnapshots: true });
 
-$("#btn-login").click(function()
-{
-    var email = $("#email").value();
-    var password = $("#password").value();
+const signUpForm = document.querySelector('#signup-form');
+signUpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    if (email != "" && password != "")
-    {
-        var result = firebase.auth().createUserWithEmailAndPassword(email, password);
+    const email = signUpForm['email'].value;
+    const password = signUpForm['password'].value;
 
-        result.catch(function(error){
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            console.log(errorCode);
-            console.log(errorMessage);
-
-            window.alert("Message: " + errorMessage);
-        })
-    }
-    else 
-    {
-        window.alert("Form is incomplete. Please fill out all fields.");
-    }
+    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+        console.log(cred);
+    })
 })
