@@ -14,7 +14,7 @@
     content="HTML, CSS, JavaScript, Bootstrap, jQuery, Rakon, Themeforest, Template, envato, SASS, SCSS, HTML5, landing page, SaaS Product, SaaS Modern,  MultiPurpose, Crypto, Currency, ICO, Hosting, Agency, Mobile, App, Interior, Charity" />
   <meta name="author" content="Rakon - Creative Multi-Purpose HTML5 Templates" />
 
-  <title>Register - Beyond Meds</title>
+  <title>Recognition Panel - Beyond Meds</title>
   <!-- favicon -->
   <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon" />
   <!-- Bootstrap 4.5 -->
@@ -56,41 +56,39 @@
           </div>
 
           <div class="title_sections margin-b-5">
-            <h2 class="c-white mb-1">Create an account</h2>
+            <h2 class="c-white mb-1">Before Getting Started</h2>
           </div>
 
           <div class="list__point">
             <div class="item media">
               <div class="icob">
-                <i class="tio account_circle"></i>
+                <p>1</p>
               </div>
               <div class="media-body my-auto">
-                <p>Join us</p>
+                <p>Keep your face in the front of the camera.</p>
               </div>
             </div>
             <div class="item media">
               <div class="icob">
-                <i class="tio explore_outlined"></i>
+                <p>2</p>
               </div>
               <div class="media-body my-auto">
-                <p>Join in, recognise and elevate your mood easily.</p>
+                <p>Proper light should be present for accurate readings.</p>
               </div>
             </div>
             <div class="item media">
               <div class="icob">
-                <i class="tio call_talking"></i>
+                <p>3</p>
               </div>
               <div class="media-body my-auto">
-                <p>Get exciting recommendations which helps in enhacement of your mood.</p>
+                <p>Not more than one person should sit in front of the camera.</p>
               </div>
             </div>
           </div>
 
         </div>
-        <div class="col-md-7 col-lg-5 ml-lg-auto">
-          <div class="item_group" style="width: 500px; height: 375px; margin-top: 130px;" id="videoSqre">
-            <video autoplay="true" id="videoElement" style="width: 500px; height: 375px;"></video>
-          </div>
+        <div class="col-md-7 col-lg-5 ml-lg-auto mt-3">
+            <video autoplay="true" id="videoElement" style="width: 600px; height: 425px; border-radius: 20px; margin-top: 100px;"></video>
         </div>
       </div>
 
@@ -122,21 +120,16 @@
   <script type="text/javascript">
     var video = document.querySelector("#videoElement");
     
-    navigator.getUserMedia = navigator.getUserMedia||navigator.
-        webkitGetUsermedia||navigator.mozGetUserMedia||navigator.
-        msGetUserMedia||navigator.oGetUserMedia;
-
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({video:true}, handleVideo, videoError);
-    }
-
-    function handleVideo(stream) {
-        video.src = window.URL.createObjectURL(stream);
-    }
-    
-    function videoError(e) 
+    if (navigator.mediaDevices.getUserMedia)
     {
-
+      navigator.mediaDevices.getUserMedia({
+        video : true
+      }).then(function(stream) {
+        video.srcObject = stream
+        video.play();
+      }).catch(function(error) {
+        console.log(error);
+      })
     }
 
   </script>

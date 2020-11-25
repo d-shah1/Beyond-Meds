@@ -26,5 +26,6 @@ signUpForm.addEventListener('submit', (e) => {
 
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
         console.log(cred);
+        window.location.replace('Img-Recognition.html');
     })
 })
